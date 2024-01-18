@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_black_italic"
         android:text="Hello World!"
+        android:textColor="@color/text_primary"
         android:textSize="@dimen/greetingTextViewFontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
