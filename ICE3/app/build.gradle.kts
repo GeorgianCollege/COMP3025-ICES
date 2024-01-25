@@ -7,6 +7,10 @@ android {
     namespace = "ca.georgiancollege.comp3025_w2024_week3"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "ca.georgiancollege.comp3025_w2024_week3"
         minSdk = 21
