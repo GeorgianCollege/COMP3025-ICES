@@ -10,6 +10,9 @@ import ca.georgiancollege.comp3025_w2024_week4.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityMainBinding
+
+    private var resultLabelValue: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -49,8 +52,7 @@ class MainActivity : AppCompatActivity()
 
     private fun processOperatorButtons(view: View)
     {
-        val resultTextView = findViewById<TextView>(R.id.resultTextView)
-        resultTextView.text = view.tag.toString()
+
     }
 
     private fun processExtraButtons(view: View)
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity()
 
     private fun processNumberButtons(view: View)
     {
-        val resultTextView = findViewById<TextView>(R.id.resultTextView)
-        resultTextView.text = view.tag.toString()
+        resultLabelValue += view.tag.toString()
+        binding.resultTextView.text = resultLabelValue
     }
 }
