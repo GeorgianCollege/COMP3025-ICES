@@ -16,25 +16,51 @@ class MainActivity : AppCompatActivity()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initializeOnClickListeners()
+    }
+
+    private fun initializeOnClickListeners()
+    {
         // operator buttons
-        binding.clearButton.setOnClickListener{ view -> processOperatorButtons(view)}
-        binding.percentButton.setOnClickListener{view -> processOperatorButtons(view)}
+        binding.mulitplyButton.setOnClickListener { view -> processOperatorButtons(view) }
+        binding.divideButton.setOnClickListener { view -> processOperatorButtons(view) }
+        binding.addButton.setOnClickListener { view -> processOperatorButtons(view) }
+        binding.subtractButton.setOnClickListener { view -> processOperatorButtons(view) }
+
+        // extra buttons
+        binding.clearButton.setOnClickListener { view -> processExtraButtons(view) }
+        binding.percentButton.setOnClickListener { view -> processExtraButtons(view) }
+        binding.backspaceButton.setOnClickListener { view -> processExtraButtons(view) }
+        binding.plusMinusButton.setOnClickListener { view -> processExtraButtons(view) }
 
         // number buttons
-        binding.zeroButton.setOnClickListener{view -> processNumberButtons(view)}
+        binding.zeroButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.oneButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.twoButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.threeButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.fourButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.fiveButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.sixButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.sevenButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.eightButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.nineButton.setOnClickListener { view -> processNumberButtons(view) }
+        binding.decimalButton.setOnClickListener { view -> processNumberButtons(view) }
     }
 
     private fun processOperatorButtons(view: View)
     {
         val resultTextView = findViewById<TextView>(R.id.resultTextView)
-        Log.i("operators", view.tag.toString())
         resultTextView.text = view.tag.toString()
+    }
+
+    private fun processExtraButtons(view: View)
+    {
+
     }
 
     private fun processNumberButtons(view: View)
     {
         val resultTextView = findViewById<TextView>(R.id.resultTextView)
-        Log.i("operators", view.tag.toString())
         resultTextView.text = view.tag.toString()
     }
 }
