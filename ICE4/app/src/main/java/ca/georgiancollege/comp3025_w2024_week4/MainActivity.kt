@@ -62,7 +62,17 @@ class MainActivity : AppCompatActivity()
 
     private fun processNumberButtons(view: View)
     {
-        resultLabelValue += view.tag.toString()
+        if(view.tag.toString() == ".")
+        {
+            if(!resultLabelValue.contains("."))
+            {
+                resultLabelValue += view.tag.toString()
+            }
+        }
+        else
+        {
+            resultLabelValue += view.tag.toString()
+        }
         binding.resultTextView.text = resultLabelValue
     }
 }
