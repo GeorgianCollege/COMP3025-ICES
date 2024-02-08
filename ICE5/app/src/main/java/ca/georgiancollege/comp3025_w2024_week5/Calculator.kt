@@ -58,8 +58,9 @@ class Calculator(binding: ActivityMainBinding)
 
                 this.m_resultLabelValue = this.m_resultLabelValue.dropLast(1)
                 this.m_binding.resultTextView.text = this.m_resultLabelValue
-                if(this.m_resultLabelValue.isEmpty())
+                if(this.m_resultLabelValue.isEmpty() || this.m_resultLabelValue == "-")
                 {
+                    this.m_resultLabelValue = ""
                     this.m_binding.resultTextView.text = "0"
                 }
             }
@@ -70,7 +71,18 @@ class Calculator(binding: ActivityMainBinding)
             }
             "plus_minus" ->
             {
-
+                if(this.m_resultLabelValue.isNotEmpty())
+                {
+                    if(this.m_resultLabelValue.contains("-"))
+                    {
+                        this.m_resultLabelValue = this.m_resultLabelValue.removePrefix("-")
+                    }
+                    else
+                    {
+                        this.m_resultLabelValue = "-" + this.m_resultLabelValue
+                    }
+                    this.m_binding.resultTextView.text = this.m_resultLabelValue
+                }
             }
         }
     }
