@@ -65,7 +65,8 @@ class Calculator(binding: ActivityMainBinding)
             }
             "clear" ->
             {
-
+                this.m_resultLabelValue = ""
+                this.m_binding.resultTextView.text = "0"
             }
             "plus_minus" ->
             {
