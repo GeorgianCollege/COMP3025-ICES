@@ -51,22 +51,51 @@ class Calculator(binding: ActivityMainBinding)
 
     private fun processExtraButtons(view: View)
     {
+        when(view.tag.toString())
+        {
+            "backspace" ->
+            {
 
+                this.m_resultLabelValue = this.m_resultLabelValue.dropLast(1)
+                this.m_binding.resultTextView.text = this.m_resultLabelValue
+                if(this.m_resultLabelValue.isEmpty())
+                {
+                    this.m_binding.resultTextView.text = "0"
+                }
+            }
+            "clear" ->
+            {
+
+            }
+            "plus_minus" ->
+            {
+
+            }
+        }
     }
 
     private fun processNumberButtons(view: View)
     {
-        if(view.tag.toString() == ".")
+        when (view.tag.toString())
         {
-            if(!this.m_resultLabelValue.contains("."))
-            {
+            "." -> {
+                if(!this.m_resultLabelValue.contains("."))
+                {
+                    if(this.m_resultLabelValue.isEmpty())
+                    {
+                        this.m_resultLabelValue = "0."
+                    }
+                    else
+                    {
+                        this.m_resultLabelValue += view.tag.toString()
+                    }
+                }
+            }
+            else -> {
                 this.m_resultLabelValue += view.tag.toString()
             }
         }
-        else
-        {
-            this.m_resultLabelValue += view.tag.toString()
-        }
+
         this.m_binding.resultTextView.text = this.m_resultLabelValue
     }
 
