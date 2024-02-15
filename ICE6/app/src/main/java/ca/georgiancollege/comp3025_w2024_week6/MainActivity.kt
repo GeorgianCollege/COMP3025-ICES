@@ -7,5 +7,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var contact = ContactModel("Tom Smythe", "4165555555", "tom@example.com")
+        println(contact)
     }
 }
