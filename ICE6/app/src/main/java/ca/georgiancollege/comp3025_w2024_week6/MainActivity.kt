@@ -13,12 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for (contact in deserializeJSON()!!)
+        for (contact in DataManager.instance.deserializeJSON(this)!!)
         {
-            println(contact)
+            println(contact.FullName)
         }
     }
-
-
-
 }
