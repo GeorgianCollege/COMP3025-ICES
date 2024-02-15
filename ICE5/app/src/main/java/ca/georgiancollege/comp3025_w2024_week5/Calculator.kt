@@ -3,15 +3,29 @@ package ca.georgiancollege.comp3025_w2024_week5
 import android.view.View
 import ca.georgiancollege.comp3025_w2024_week5.databinding.ActivityMainBinding
 
+    // LHS [OPERATOR] RHS [OPERATOR=] RESULT
+    // LHS [OPERATOR] RHS [OPERATOR] RHS... [OPERATOR=] RESULT
+    // 7add9multiply5divide3subtract8
+    // 7add45divide3subtract8
+    // 7add15subtract8
+    // 22subtract8
+    // 14
+
+
+
 class Calculator(binding: ActivityMainBinding)
 {
     private var m_resultLabelValue: String
     private var m_binding: ActivityMainBinding
+    private var m_lhs: String
+    private var m_active_operation: String
 
     init
     {
         this.m_binding = binding
         this.m_resultLabelValue = ""
+        this.m_lhs = ""
+        this.m_active_operation = ""
 
         initializeOnClickListeners()
     }
@@ -46,6 +60,48 @@ class Calculator(binding: ActivityMainBinding)
 
     private fun processOperatorButtons(view: View)
     {
+        if(m_lhs.isEmpty() && this.m_resultLabelValue.isNotEmpty())
+        {
+            this.m_lhs = this.m_resultLabelValue
+            this.m_resultLabelValue = ""
+            this.m_active_operation = view.tag.toString()
+        }
+        else if(this.m_lhs.isNotEmpty() && this.m_resultLabelValue.isEmpty())
+        {
+            this.m_active_operation = view.tag.toString()
+        }
+        else if(this.m_lhs.isNotEmpty() && this.m_resultLabelValue.isNotEmpty())
+        {
+            // compute the result based ont the last operator selected
+
+            when(this.m_active_operation) {
+                "multiply" -> {
+
+                }
+
+                "divide" -> {
+
+                }
+
+                "add" -> {
+                    this.m_lhs = add(this.m_lhs, this.m_resultLabelValue)
+                    this.m_resultLabelValue = ""
+                    this.m_binding.resultTextView.text = this.m_lhs;
+                }
+
+                "subtract" -> {
+                    this.m_lhs = subtract(this.m_lhs, this.m_resultLabelValue)
+                    this.m_resultLabelValue = ""
+                    this.m_binding.resultTextView.text = this.m_lhs;
+                }
+
+                "equals" -> {
+
+                }
+            }
+            // update the last operation
+            this.m_active_operation = view.tag.toString()
+        }
 
     }
 
@@ -66,8 +122,7 @@ class Calculator(binding: ActivityMainBinding)
             }
             "clear" ->
             {
-                this.m_resultLabelValue = ""
-                this.m_binding.resultTextView.text = "0"
+                clear()
             }
             "plus_minus" ->
             {
@@ -110,6 +165,77 @@ class Calculator(binding: ActivityMainBinding)
         }
 
         this.m_binding.resultTextView.text = this.m_resultLabelValue
+    }
+
+    /**
+     * This function clears the in-memory values for the LHS and the RHS
+     *
+     * @return [Unit]
+     */
+    private fun clear():Unit
+    {
+        this.m_resultLabelValue = ""
+        this.m_lhs = ""
+        this.m_active_operation = ""
+        this.m_binding.resultTextView.text = "0"
+    }
+
+    /**
+     * This function subtracts the rhs from the lhs and returns a string representation of the result
+     *
+     * @param lhs [String]
+     * @param rhs [String]
+     * @return [String]
+     */
+    private fun subtract(lhs: String, rhs: String): String
+    {
+        var LHS = lhs
+        var RHS = rhs
+
+        if(LHS.isEmpty())
+        {
+            LHS = "0"
+        }
+
+        if(RHS.isEmpty())
+        {
+            RHS = "0"
+        }
+
+        if(LHS.contains(".") || RHS.contains("."))
+        {
+            return (LHS.toFloat() - RHS.toFloat()).toString()
+        }
+        return (LHS.toInt() - RHS.toInt()).toString()
+    }
+
+    /**
+     * This function adds the lhs to the rhs and returns a string representation of the result
+     *
+     * @param lhs [String]
+     * @param rhs [String]
+     * @return [String]
+     */
+    private fun add(lhs: String, rhs: String): String
+    {
+        var LHS = lhs
+        var RHS = rhs
+
+        if(LHS.isEmpty())
+        {
+            LHS = "0"
+        }
+
+        if(RHS.isEmpty())
+        {
+            RHS = "0"
+        }
+
+        if(LHS.contains(".") || RHS.contains("."))
+        {
+            return (LHS.toFloat() + RHS.toFloat()).toString()
+        }
+        return (LHS.toInt() + RHS.toInt()).toString()
     }
 
 
