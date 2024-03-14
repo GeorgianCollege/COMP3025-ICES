@@ -15,14 +15,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val favouriteTVShows = arrayOf(
-            TVShow("House of the Dragon", "HBO"),
-            TVShow("Lord of the Rings", "Prime Video"),
-            TVShow("Andor", "Disney"),
-            TVShow("Severance", "AppleTv"),
-            TVShow("Star Trek: Strange New Worlds", "Paramount+")
-        )
+        // read JSON file and convert to TVShow Data
+        val favouriteTVShows = DataManager.instance.deserializeJSON(this)
 
+        // pass the TVShow data to the RecycleView Adapter
         val firstAdapter = FirstAdapter(favouriteTVShows)
         // Use view binding to replace findViewById or synthetic properties
         binding.FirstRecyclerView.apply {
