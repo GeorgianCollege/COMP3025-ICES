@@ -35,18 +35,18 @@ class LoginActivity : AppCompatActivity()
             startActivity(intent)
         }
 
-        /*
+
         binding.loginButton.setOnClickListener {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
             loginUser(username, password)
         }
 
-         */
+
 
     }
 
-    /*
+
     private fun loginUser(username: String, password: String)
     {
         val user = User(username = username, password = password)
@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity()
         })
     }
 
-     */
+
 
     private fun showLoginFailedSnackbar(message: String) {
         val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)

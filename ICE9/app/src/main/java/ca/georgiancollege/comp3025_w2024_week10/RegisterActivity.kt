@@ -21,7 +21,7 @@ class RegisterActivity : AppCompatActivity()
             finish()
         }
 
-        /*
+
         binding.RegisterButton.setOnClickListener {
             val user = User(
                 username = binding.UsernameText.text.toString(),
@@ -33,10 +33,10 @@ class RegisterActivity : AppCompatActivity()
             registerUser(user)
         }
 
-         */
+
     }
 
-    /*
+
     private fun registerUser(user: User) {
         DataManager.instance(this).registerUser(user, object : Callback<ApiResponse<User>>
         {
@@ -61,5 +61,5 @@ class RegisterActivity : AppCompatActivity()
         })
     }
 
-     */
+
 }
