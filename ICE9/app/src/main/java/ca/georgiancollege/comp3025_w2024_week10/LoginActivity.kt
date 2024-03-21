@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity()
 
         binding.registerButton.setOnClickListener {
             // Navigate to RegisterActivity
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
 

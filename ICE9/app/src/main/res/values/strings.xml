@@ -37,4 +37,5 @@
     <string name="add_a_movie">Add a Movie</string>
     <string name="logout">Logout</string>
     <string name="movies">Movies!</string>
+    <string name="studio_prompt">Studio Name</string>
 </resources>
